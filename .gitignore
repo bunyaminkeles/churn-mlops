@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Test & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MLflow lokal artefaktları
+mlruns/
+mlartifacts/
+
+# Ortam değişkenleri (gizli bilgiler)
+.env
+
+# IDE / OS
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.DS_Store
