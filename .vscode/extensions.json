@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.flake8",
+    "ms-azuretools.vscode-docker",
+    "github.vscode-github-actions",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml"
+  ]
+}
