@@ -1,5 +1,5 @@
 """Konfigürasyon paketi."""
 
-from churn_mlops.config.settings import ProjectConfig
+from churn_mlops.config.settings import DataConfig, ProjectConfig, SplitConfig
 
-__all__ = ["ProjectConfig"]
+__all__ = ["DataConfig", "ProjectConfig", "SplitConfig"]

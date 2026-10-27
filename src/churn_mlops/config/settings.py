@@ -3,7 +3,7 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 DEFAULT_PARAMS_PATH = Path("params.yaml")
 
@@ -18,12 +18,23 @@ class DataConfig(BaseModel):
     id_column: str
 
 
+class SplitConfig(BaseModel):
+    """Eğitim/test ayrımıyla ilgili ayarlar."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    test_size: float = Field(gt=0, lt=1)
+    random_state: int
+    stratify: bool
+
+
 class ProjectConfig(BaseModel):
     """Projenin tüm konfigürasyonunu temsil eden kök model."""
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     data: DataConfig
+    split: SplitConfig
 
     @classmethod
     def from_yaml(cls, path: Path = DEFAULT_PARAMS_PATH) -> "ProjectConfig":
