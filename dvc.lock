@@ -1,0 +1,61 @@
+schema: '2.0'
+stages:
+  clean:
+    cmd: python -m churn_mlops.pipelines.clean
+    deps:
+    - path: data/raw/telco_churn.csv
+      hash: md5
+      md5: 3b0bfab28a8101b4e4fdd08025a5c235
+      size: 970457
+    - path: src/churn_mlops/data/cleaner.py
+      hash: md5
+      md5: 523aab63e44ecdfe4459a09b487edaa5
+      size: 2380
+    - path: src/churn_mlops/data/loader.py
+      hash: md5
+      md5: 5f86ec228303b9bd7ced563ac71cfc42
+      size: 1679
+    - path: src/churn_mlops/pipelines/clean.py
+      hash: md5
+      md5: d1e3e222bbf2181b81445843e8d9b01f
+      size: 871
+    params:
+      params.yaml:
+        data.id_column: customerID
+        data.target_column: Churn
+    outs:
+    - path: data/interim/telco_churn_clean.csv
+      hash: md5
+      md5: b5faaa0cf0adc33361689ac64fe32de5
+      size: 885515
+  split:
+    cmd: python -m churn_mlops.pipelines.split
+    deps:
+    - path: data/interim/telco_churn_clean.csv
+      hash: md5
+      md5: b5faaa0cf0adc33361689ac64fe32de5
+      size: 885515
+    - path: src/churn_mlops/data/splitter.py
+      hash: md5
+      md5: e461e98595bb20720df61e539d2cddb4
+      size: 1203
+    - path: src/churn_mlops/pipelines/split.py
+      hash: md5
+      md5: fb50fb4c25db2e6e5653f219a5062703
+      size: 1008
+    params:
+      params.yaml:
+        data.target_column: Churn
+        split:
+          test_size: 0.2
+          random_state: 42
+          stratify: true
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: fca03201454228b89a81d80b287b2e4a
+      size: 177529
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 1877d5d15e68216227c9cec79cbdc8a8
+      size: 708235
