@@ -9,11 +9,14 @@ DEFAULT_PARAMS_PATH = Path("params.yaml")
 
 
 class DataConfig(BaseModel):
-    """Veri kaynağıyla ilgili ayarlar."""
+    """Veri kaynakları ve çıktı yollarıyla ilgili ayarlar."""
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     raw_path: Path
+    interim_path: Path
+    train_path: Path
+    test_path: Path
     target_column: str
     id_column: str
 

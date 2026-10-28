@@ -56,3 +56,6 @@ markers = ["integration: dış servis veya dosya sistemi gerektiren testler"]
 [tool.coverage.run]
 source = ["src/churn_mlops"]
 omit = ["*/__init__.py"]
+
+[tool.coverage.report]
+exclude_also = ["if __name__ == .__main__.:"]

@@ -1,5 +1,8 @@
 data:
   raw_path: data/raw/telco_churn.csv
+  interim_path: data/interim/telco_churn_clean.csv
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
   target_column: Churn
   id_column: customerID
 

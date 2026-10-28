@@ -11,6 +11,9 @@ from churn_mlops.config import ProjectConfig
 VALID_CONFIG = {
     "data": {
         "raw_path": "data/raw/sample.csv",
+        "interim_path": "data/interim/sample_clean.csv",
+        "train_path": "data/processed/train.csv",
+        "test_path": "data/processed/test.csv",
         "target_column": "Churn",
         "id_column": "customerID",
     },

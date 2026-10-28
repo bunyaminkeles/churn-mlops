@@ -24,9 +24,12 @@ def sample_raw_df() -> pd.DataFrame:
 
 @pytest.fixture
 def data_config(tmp_path: Path) -> DataConfig:
-    """Geçici klasördeki bir CSV dosyasına işaret eden test konfigürasyonu."""
+    """Geçici klasördeki dosyalara işaret eden test konfigürasyonu."""
     return DataConfig(
         raw_path=tmp_path / "raw.csv",
+        interim_path=tmp_path / "interim" / "clean.csv",
+        train_path=tmp_path / "processed" / "train.csv",
+        test_path=tmp_path / "processed" / "test.csv",
         target_column="Churn",
         id_column="customerID",
     )
