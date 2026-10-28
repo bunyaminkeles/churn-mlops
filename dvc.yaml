@@ -1,0 +1,26 @@
+stages:
+  clean:
+    cmd: python -m churn_mlops.pipelines.clean
+    deps:
+      - ${data.raw_path}
+      - src/churn_mlops/data/loader.py
+      - src/churn_mlops/data/cleaner.py
+      - src/churn_mlops/pipelines/clean.py
+    params:
+      - data.target_column
+      - data.id_column
+    outs:
+      - ${data.interim_path}
+
+  split:
+    cmd: python -m churn_mlops.pipelines.split
+    deps:
+      - ${data.interim_path}
+      - src/churn_mlops/data/splitter.py
+      - src/churn_mlops/pipelines/split.py
+    params:
+      - data.target_column
+      - split
+    outs:
+      - ${data.train_path}
+      - ${data.test_path}

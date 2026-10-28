@@ -5,12 +5,9 @@ import logging
 import pandas as pd
 
 from churn_mlops.config.settings import DataConfig
+from churn_mlops.data.exceptions import DataValidationError
 
 logger = logging.getLogger(__name__)
-
-
-class DataValidationError(Exception):
-    """Verinin beklenen yapıya uymadığını belirtir."""
 
 
 class DataLoader:
